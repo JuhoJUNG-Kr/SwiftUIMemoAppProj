@@ -8,10 +8,21 @@
 import SwiftUI
 
 struct ContentView: View {
+    @EnvironmentObject var manager: MemoManager
+    
     var body: some View {
         NavigationView {
             TabView {
-                MemoView()
+                List {
+                    ForEach(manager.memoList) { memo in
+                        NavigationLink {
+                            DetailView()
+                        } label: {
+                            MemoView(memo: memo)
+                        }
+
+                    }
+                }
                     .tabItem {
                         Image(systemName: "person")
                             .resizable()
@@ -28,6 +39,6 @@ struct ContentView: View {
 
 struct ContentView_Previews: PreviewProvider {
     static var previews: some View {
-        ContentView()
+        ContentView().environmentObject(MemoManager())
     }
 }

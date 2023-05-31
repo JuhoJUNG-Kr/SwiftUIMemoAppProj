@@ -1,5 +1,5 @@
 //
-//  MemoView.swift
+//  DetailView.swift
 //  MemoApp
 //
 //  Created by 정주호 on 31/05/2023.
@@ -7,14 +7,14 @@
 
 import SwiftUI
 
-struct MemoView: View {
+struct DetailView: View {
     var body: some View {
         Text(/*@START_MENU_TOKEN@*/"Hello, World!"/*@END_MENU_TOKEN@*/)
     }
 }
 
-struct MemoView_Previews: PreviewProvider {
+struct DetailView_Previews: PreviewProvider {
     static var previews: some View {
-        MemoView()
+        DetailView()
     }
 }
