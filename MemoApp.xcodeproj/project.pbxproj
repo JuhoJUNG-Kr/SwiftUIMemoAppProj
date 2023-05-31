@@ -93,6 +93,7 @@
 		5B593F992A277773000DBD7D /* ViewModels */ = {
 			isa = PBXGroup;
 			children = (
+				5B593F9D2A277B06000DBD7D /* MemoManager.swift */,
 			);
 			path = ViewModels;
 			sourceTree = "<group>";
@@ -101,7 +102,6 @@
 			isa = PBXGroup;
 			children = (
 				5B593F9B2A2777C3000DBD7D /* Memo.swift */,
-				5B593F9D2A277B06000DBD7D /* MemoManager.swift */,
 			);
 			path = Models;
 			sourceTree = "<group>";

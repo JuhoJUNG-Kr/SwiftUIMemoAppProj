@@ -18,7 +18,7 @@ struct ContentView: View {
                 List {
                     ForEach(manager.memoList) { memo in
                         NavigationLink {
-                            DetailView()
+                            DetailView(memo: memo)
                         } label: {
                             MemoView(memo: memo)
                         }
@@ -42,21 +42,22 @@ struct ContentView: View {
                     Text("Scedule")
                 }
             }
-            .toolbar(content: {
+            .navigationTitle("Memo")
+            .navigationBarTitleDisplayMode(.large)
+            .toolbar {
                 Button {
                     isPressedPlusButton = true
                 } label: {
                     Image(systemName: "plus")
                 }
                 .padding()
-                
-            })
-            .sheet(isPresented: $isPressedPlusButton, content: {
+            }
+            .sheet(isPresented: $isPressedPlusButton) {
                 NewMemoView()
-            })
-            .navigationTitle("Memo")
-            .navigationBarTitleDisplayMode(.large)
+            }
         }
+        .navigationViewStyle(.stack)
+
     }
 }
 
