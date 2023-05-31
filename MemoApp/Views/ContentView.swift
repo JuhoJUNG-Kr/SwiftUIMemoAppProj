@@ -9,9 +9,11 @@ import SwiftUI
 
 struct ContentView: View {
     @EnvironmentObject var manager: MemoManager
+    @State private var isPressedPlusButton = false
     
     var body: some View {
         NavigationView {
+            // MARK: - Main View
             TabView {
                 List {
                     ForEach(manager.memoList) { memo in
@@ -20,21 +22,42 @@ struct ContentView: View {
                         } label: {
                             MemoView(memo: memo)
                         }
-
                     }
+                    .onDelete(perform: manager.memoDelete)
                 }
-                    .tabItem {
-                        Image(systemName: "person")
-                            .resizable()
-                            .foregroundColor(.secondary)
-                        Text("first")
-                    }
+                .tabItem {
+                    Image(systemName: "square.and.pencil")
+                        .resizable()
+                    Text("My Memo")
+                }
+                
+                // MARK: - Second View
+                
+                TabView {
+                    Text("second page")
+                }
+                .tabItem {
+                    Image(systemName: "person")
+                        .resizable()
+                    Text("Scedule")
+                }
             }
+            .toolbar(content: {
+                Button {
+                    isPressedPlusButton = true
+                } label: {
+                    Image(systemName: "plus")
+                }
+                .padding()
+                
+            })
+            .sheet(isPresented: $isPressedPlusButton, content: {
+                NewMemoView()
+            })
             .navigationTitle("Memo")
-            .navigationBarTitleDisplayMode(.automatic)
+            .navigationBarTitleDisplayMode(.large)
         }
     }
-    
 }
 
 struct ContentView_Previews: PreviewProvider {

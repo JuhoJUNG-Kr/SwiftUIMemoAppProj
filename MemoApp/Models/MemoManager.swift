@@ -18,7 +18,22 @@ final class MemoManager: ObservableObject {
         ]
     }
     
-    func newMemoButtonPressed(memo: String) {
+    func insert(memo: String) {
         memoList.insert(Memo(memo: memo), at: 0)
+    }
+    
+    func memoUpdate(memo: Memo?, content: String) {
+        guard let memo = memo else { return }
+        memo.memo = content
+    }
+    
+    func memoDeleteAll(memo: Memo) {
+        memoList.removeAll { $0.id == memo.id }
+    }
+    
+    func memoDelete(set: IndexSet) {
+        for index in set {
+            memoList.remove(at: index)
+        }
     }
 }
